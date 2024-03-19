@@ -1,19 +1,28 @@
+import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import likeIcon from '../assets/images/like.png';
 
-export default function FeedPost({post}) {
+const FeedPost = React.memo(({post}) => {
   const [isLiked, setIsLiked] = useState(false);
 
+  const navigation = useNavigation();
+  const profileNavigate = () =>
+    navigation.navigate('Profile', {id: post.User.id});
+
   return (
-    <View style={styles.post}>
+    <View style={styles.postWrapper}>
       <View style={styles.header}>
-        <Image source={{uri: post.User.image}} style={styles.headerImage} />
-        <View>
-          <Text style={styles.headerName}>{post.User.name}</Text>
-          <Text style={styles.headerTime}>{post.createdAt}</Text>
-        </View>
+        <Pressable onPress={profileNavigate} style={{flexDirection: 'row'}}>
+          <Image source={{uri: post.User.image}} style={styles.headerProfile} />
+          <View>
+            <Text style={{fontSize: 16, fontWeight: '500'}}>
+              {post.User.name}
+            </Text>
+            <Text style={{color: 'gray'}}>{post.createdAt}</Text>
+          </View>
+        </Pressable>
         <View style={styles.headerIcon}>
           <Icon name="dots-horizontal" size={20} color="gray" />
         </View>
@@ -22,16 +31,23 @@ export default function FeedPost({post}) {
         <Text style={styles.postDescription}>{post.description}</Text>
       )}
       {post.image && (
-        <Image source={{uri: post.image}} style={styles.postImage} />
+        <Image
+          source={{uri: post.image}}
+          style={{width: '100%', aspectRatio: 1}}
+        />
       )}
-      <View style={styles.footer}>
+      <>
         <View style={styles.statsRow}>
           <Image source={likeIcon} style={styles.likeIcon} />
           <Text
-            style={
-              styles.likedBy
-            }>{`Wahyu and ${post.numberOfLikes} others`}</Text>
-          <Text style={styles.shares}>{`${post.numberOfShares} shares`}</Text>
+            style={{
+              color: 'grey',
+            }}>{`Wahyu and ${post.numberOfLikes} others`}</Text>
+          <Text
+            style={{
+              marginLeft: 'auto',
+              color: 'grey',
+            }}>{`${post.numberOfShares} shares`}</Text>
         </View>
         <View style={styles.bottomRow}>
           <Icon.Button
@@ -42,7 +58,7 @@ export default function FeedPost({post}) {
             onPress={() => setIsLiked(!isLiked)}>
             <Text
               style={{
-                ...styles.textBtn,
+                fontWeight: '500',
                 color: isLiked ? 'royalblue' : 'grey',
               }}>
               Like
@@ -54,7 +70,7 @@ export default function FeedPost({post}) {
             color="grey"
             backgroundColor="#fff"
             onPress={() => setIsLiked(!isLiked)}>
-            <Text style={styles.textBtn}>Comment</Text>
+            <Text style={{fontWeight: '500'}}>Comment</Text>
           </Icon.Button>
           <Icon.Button
             name="share-outline"
@@ -62,19 +78,21 @@ export default function FeedPost({post}) {
             color="grey"
             backgroundColor="#fff"
             onPress={() => setIsLiked(!isLiked)}>
-            <Text style={styles.textBtn}>Share</Text>
+            <Text style={{fontWeight: '500'}}>Share</Text>
           </Icon.Button>
         </View>
-      </View>
+      </>
     </View>
   );
-}
+});
+
+export default FeedPost;
 
 const styles = StyleSheet.create({
-  post: {
+  postWrapper: {
     width: '100%',
-    paddingHorizontal: 10,
     paddingTop: 20,
+    paddingHorizontal: 10,
     marginBottom: 10,
     backgroundColor: '#fff',
   },
@@ -84,24 +102,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 20,
   },
-  headerImage: {
+  headerProfile: {
     width: 50,
     height: 50,
     borderRadius: 50 / 2,
     marginRight: 10,
   },
-  headerName: {
-    fontSize: 16,
-    fontWeight: '500',
-  },
-  headerTime: {
-    color: 'gray',
-  },
   headerIcon: {
     width: 50,
     height: 50,
     borderRadius: 50 / 2,
-    // backgroundColor: 'purple',
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 'auto',
@@ -112,11 +122,6 @@ const styles = StyleSheet.create({
     letterSpacing: 0.3,
     marginBottom: 10,
   },
-  postImage: {
-    width: '100%',
-    aspectRatio: 1,
-  },
-  footer: {},
   statsRow: {
     paddingVertical: 10,
     flexDirection: 'row',
@@ -128,19 +133,9 @@ const styles = StyleSheet.create({
     height: 20,
     marginRight: 5,
   },
-  likedBy: {
-    color: 'grey',
-  },
-  shares: {
-    marginLeft: 'auto',
-    color: 'grey',
-  },
   bottomRow: {
     paddingVertical: 10,
     flexDirection: 'row',
     justifyContent: 'space-around',
-  },
-  textBtn: {
-    fontWeight: '500',
   },
 });
