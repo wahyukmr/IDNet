@@ -32,6 +32,7 @@ const ProfileHeader = ({user, isMe = false}) => {
             name="plus"
             size={18}
             color="#fff"
+            containerStyle={{flex: 1}}
             backgroundColor="royalblue"
             onPress={() => console.log('Plus')}>
             <Text style={{fontWeight: '500', color: '#fff'}}>Add to Story</Text>
@@ -40,6 +41,7 @@ const ProfileHeader = ({user, isMe = false}) => {
             name="account-edit"
             size={18}
             color="black"
+            containerStyle={{flex: 1}}
             backgroundColor="gainsboro"
             onPress={() => console.log('Edit')}>
             <Text style={{fontWeight: '500', color: 'black'}}>
@@ -50,6 +52,7 @@ const ProfileHeader = ({user, isMe = false}) => {
             name="logout-variant"
             size={18}
             color="black"
+            containerStyle={{flex: 1}}
             backgroundColor="gainsboro"
             iconStyle={{marginRight: 0}}
             onPress={signup}
@@ -57,17 +60,19 @@ const ProfileHeader = ({user, isMe = false}) => {
         </View>
       )}
 
-      <View style={styles.textLine}>
-        <Icon name="school" size={18} color="gray" />
-        <Text>Graduated university</Text>
+      <View style={{...styles.textLine, marginTop: 10}}>
+        <Icon name="school" size={20} color="gray" />
+        <Text style={{color: '#333', marginLeft: 5}}>Graduated university</Text>
       </View>
       <View style={styles.textLine}>
-        <Icon name="clock-time-three" size={18} color="gray" />
-        <Text>Joined on October 2023</Text>
+        <Icon name="clock-time-three" size={20} color="gray" />
+        <Text style={{color: '#333', marginLeft: 5}}>
+          Joined on October 2023
+        </Text>
       </View>
       <View style={styles.textLine}>
-        <Icon name="map-marker" size={18} color="gray" />
-        <Text>From Indonesia</Text>
+        <Icon name="map-marker" size={20} color="gray" />
+        <Text style={{color: '#333', marginLeft: 5}}>From Indonesia</Text>
       </View>
     </View>
   );
@@ -106,9 +111,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 20,
     justifyContent: 'center',
-    paddingVertical: 5,
+    paddingVertical: 10,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: 'lightgrey',
-    // backgroundColor: 'yellow',
+  },
+  textLine: {
+    flexDirection: 'row',
+    alignSelf: 'flex-start',
+    marginVertical: 5,
   },
 });
