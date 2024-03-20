@@ -1,8 +1,8 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
+import {Alert, Dimensions, Image, StyleSheet, Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {LoadContent} from '.';
+import {FeedHeader} from '.';
 
 const dummy_img =
   'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/user.png';
@@ -15,73 +15,87 @@ const ProfileHeader = ({user, isMe = false}) => {
 
   const signup = async () => console.log('Logout');
 
-  if (!user) {
-    return <LoadContent message="Get profile information" />;
-  }
+  return user ? (
+    <>
+      <View style={styles.userDetail}>
+        <Image source={{uri: bg}} style={styles.bg} />
+        <Image source={{uri: user?.image || dummy_img}} style={styles.image} />
 
-  return (
-    <View style={styles.container}>
-      <Image source={{uri: bg}} style={styles.bg} />
-      <Image source={{uri: user?.image || dummy_img}} style={styles.image} />
+        <Text style={styles.name}>{user.name}</Text>
 
-      <Text style={styles.name}>{user.name}</Text>
+        {isMe && (
+          <View style={styles.buttonsWrapper}>
+            <Icon.Button
+              name="plus"
+              size={18}
+              color="#fff"
+              containerStyle={{flex: 1}}
+              backgroundColor="royalblue"
+              onPress={() => console.log('Plus')}>
+              <Text style={{fontWeight: '500', color: '#fff'}}>
+                Add to Story
+              </Text>
+            </Icon.Button>
+            <Icon.Button
+              name="account-edit"
+              size={18}
+              color="black"
+              containerStyle={{flex: 1}}
+              backgroundColor="gainsboro"
+              onPress={() => console.log('Edit')}>
+              <Text style={{fontWeight: '500', color: 'black'}}>
+                Edit Profile
+              </Text>
+            </Icon.Button>
+            <Icon.Button
+              name="logout-variant"
+              size={18}
+              color="black"
+              containerStyle={{flex: 1}}
+              backgroundColor="gainsboro"
+              iconStyle={{marginRight: 0}}
+              onPress={signup}
+            />
+          </View>
+        )}
 
-      {isMe && (
-        <View style={styles.buttonsWrapper}>
-          <Icon.Button
-            name="plus"
-            size={18}
-            color="#fff"
-            containerStyle={{flex: 1}}
-            backgroundColor="royalblue"
-            onPress={() => console.log('Plus')}>
-            <Text style={{fontWeight: '500', color: '#fff'}}>Add to Story</Text>
-          </Icon.Button>
-          <Icon.Button
-            name="account-edit"
-            size={18}
-            color="black"
-            containerStyle={{flex: 1}}
-            backgroundColor="gainsboro"
-            onPress={() => console.log('Edit')}>
-            <Text style={{fontWeight: '500', color: 'black'}}>
-              Edit Profile
-            </Text>
-          </Icon.Button>
-          <Icon.Button
-            name="logout-variant"
-            size={18}
-            color="black"
-            containerStyle={{flex: 1}}
-            backgroundColor="gainsboro"
-            iconStyle={{marginRight: 0}}
-            onPress={signup}
-          />
+        <View style={{...styles.textLine, marginTop: 10}}>
+          <Icon name="school" size={20} color="gray" />
+          <Text style={{color: '#333', marginLeft: 5}}>
+            Graduated university
+          </Text>
         </View>
-      )}
+        <View style={styles.textLine}>
+          <Icon name="clock-time-three" size={20} color="gray" />
+          <Text style={{color: '#333', marginLeft: 5}}>
+            Joined on October 2023
+          </Text>
+        </View>
+        <View style={styles.textLine}>
+          <Icon name="map-marker" size={20} color="gray" />
+          <Text style={{color: '#333', marginLeft: 5}}>From Indonesia</Text>
+        </View>
+      </View>
 
-      <View style={{...styles.textLine, marginTop: 10}}>
-        <Icon name="school" size={20} color="gray" />
-        <Text style={{color: '#333', marginLeft: 5}}>Graduated university</Text>
+      <View style={{marginTop: 10}}>
+        <Text style={styles.sectionTitle}>Posts</Text>
+        <FeedHeader />
       </View>
-      <View style={styles.textLine}>
-        <Icon name="clock-time-three" size={20} color="gray" />
-        <Text style={{color: '#333', marginLeft: 5}}>
-          Joined on October 2023
-        </Text>
-      </View>
-      <View style={styles.textLine}>
-        <Icon name="map-marker" size={20} color="gray" />
-        <Text style={{color: '#333', marginLeft: 5}}>From Indonesia</Text>
-      </View>
-    </View>
+    </>
+  ) : (
+    Alert.alert('Error 404!', "Can't get user information from the server", [
+      {
+        text: 'Back',
+        onPress: () => navigation.goBack(),
+      },
+    ])
   );
 };
 
 export default ProfileHeader;
 
 const styles = StyleSheet.create({
-  container: {
+  userDetail: {
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
@@ -119,5 +133,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignSelf: 'flex-start',
     marginVertical: 5,
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
+    backgroundColor: '#fff',
+    paddingTop: 15,
+    paddingHorizontal: 15,
   },
 });
