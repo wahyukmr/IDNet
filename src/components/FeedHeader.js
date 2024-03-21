@@ -19,7 +19,7 @@ const FeedHeader = () => {
   const createPostNavigate = () => navigation.navigate('Create Post');
 
   return (
-    <View style={styles.header}>
+    <View style={styles.feedHeader}>
       <TouchableOpacity onPress={profileNavigate}>
         <Image source={{uri: img}} style={styles.profileImage} />
       </TouchableOpacity>
@@ -36,8 +36,8 @@ const FeedHeader = () => {
 export default FeedHeader;
 
 const styles = StyleSheet.create({
-  header: {
-    paddingHorizontal: 10,
+  feedHeader: {
+    paddingHorizontal: 20,
     paddingVertical: 15,
     marginBottom: 10,
     flexDirection: 'row',

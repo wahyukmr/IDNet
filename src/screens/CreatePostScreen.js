@@ -103,7 +103,7 @@ const CreatePostScreen = () => {
 
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={{bottom: 10}}>
+        style={{bottom: 20}}>
         <TouchableNativeFeedback
           onPress={onPost}
           disabled={!description && !selectedImage}
