@@ -23,63 +23,61 @@ const ProfileHeader = ({user, isMe = false}) => {
 
         <Text style={styles.name}>{user.name}</Text>
 
-        {isMe && (
-          <View style={styles.buttonsWrapper}>
-            <Icon.Button
-              name="plus"
-              size={18}
-              color="#fff"
-              containerStyle={{flex: 1}}
-              backgroundColor="royalblue"
-              onPress={() => console.log('Plus')}>
-              <Text style={{fontWeight: '500', color: '#fff'}}>
-                Add to Story
-              </Text>
-            </Icon.Button>
-            <Icon.Button
-              name="account-edit"
-              size={18}
-              color="black"
-              containerStyle={{flex: 1}}
-              backgroundColor="gainsboro"
-              onPress={() => console.log('Edit')}>
-              <Text style={{fontWeight: '500', color: 'black'}}>
-                Edit Profile
-              </Text>
-            </Icon.Button>
-            <Icon.Button
-              name="logout-variant"
-              size={18}
-              color="black"
-              containerStyle={{flex: 1}}
-              backgroundColor="gainsboro"
-              iconStyle={{marginRight: 0}}
-              onPress={signup}
-            />
-          </View>
-        )}
+        {/* {isMe && ( */}
+        <View style={styles.buttonsWrapper}>
+          <Icon.Button
+            name={isMe ? 'plus' : 'account-plus'}
+            size={22}
+            color="#fff"
+            backgroundColor="royalblue"
+            iconStyle={{marginRight: 5}}
+            onPress={() => console.log('Plus')}>
+            <Text style={{fontSize: 16, fontWeight: '600', color: '#fff'}}>
+              {isMe ? 'Add to Story' : 'Add to friend'}
+            </Text>
+          </Icon.Button>
+          <Icon.Button
+            name={isMe ? 'account-edit' : 'message-plus'}
+            size={22}
+            color="#333"
+            backgroundColor="gainsboro"
+            iconStyle={{marginRight: 5}}
+            onPress={() => console.log('Edit')}>
+            <Text style={{fontSize: 16, fontWeight: '600', color: '#333'}}>
+              {isMe ? 'Edit Profile' : 'Send Message'}
+            </Text>
+          </Icon.Button>
+          <Icon.Button
+            name={isMe ? 'logout-variant' : 'dots-vertical'}
+            size={22}
+            color="#333"
+            backgroundColor="gainsboro"
+            iconStyle={{marginRight: 0}}
+            onPress={signup}
+          />
+        </View>
+        {/* )} */}
 
-        <View style={{...styles.textLine, marginTop: 10}}>
-          <Icon name="school" size={20} color="gray" />
-          <Text style={{color: '#333', marginLeft: 5}}>
-            Graduated university
-          </Text>
+        <View style={{...styles.textLine, paddingTop: 15}}>
+          <Icon name="school" size={22} color="gray" />
+          <Text style={styles.textDetails}>Graduated university</Text>
         </View>
         <View style={styles.textLine}>
-          <Icon name="clock-time-three" size={20} color="gray" />
-          <Text style={{color: '#333', marginLeft: 5}}>
-            Joined on October 2023
-          </Text>
+          <Icon name="clock-time-three" size={22} color="gray" />
+          <Text style={styles.textDetails}>Joined on October 2023</Text>
         </View>
-        <View style={styles.textLine}>
-          <Icon name="map-marker" size={20} color="gray" />
-          <Text style={{color: '#333', marginLeft: 5}}>From Indonesia</Text>
+        <View style={{...styles.textLine, paddingBottom: 10}}>
+          <Icon name="map-marker" size={22} color="gray" />
+          <Text style={styles.textDetails}>From Indonesia</Text>
         </View>
       </View>
 
-      <View style={{marginTop: 10}}>
-        <Text style={styles.sectionTitle}>Posts</Text>
-        <FeedHeader />
+      <View style={{marginTop: 10, marginBottom: !isMe ? 10 : null}}>
+        <Text
+          style={{...styles.sectionTitle, paddingBottom: !isMe ? 15 : null}}>
+          Posts
+        </Text>
+        {isMe && <FeedHeader />}
       </View>
     </>
   ) : (
@@ -116,15 +114,16 @@ const styles = StyleSheet.create({
     borderColor: '#fff',
   },
   name: {
-    fontSize: 16,
-    fontWeight: '500',
-    marginVertical: 5,
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#333',
+    marginTop: 5,
+    marginBottom: 15,
   },
   buttonsWrapper: {
     width: '100%',
     flexDirection: 'row',
-    gap: 20,
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     paddingVertical: 10,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: 'lightgrey',
@@ -134,9 +133,14 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     marginVertical: 5,
   },
+  textDetails: {
+    fontSize: 16,
+    color: '#333',
+    marginLeft: 10,
+  },
   sectionTitle: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: '600',
     color: '#333',
     backgroundColor: '#fff',
     paddingTop: 15,
