@@ -2,7 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Alert, Dimensions, Image, StyleSheet, Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {FeedHeader} from '.';
+import {FeedHeader, ProfileHeaderDetail} from '.';
 
 const dummy_img =
   'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/user.png';
@@ -58,23 +58,24 @@ const ProfileHeader = ({user, isMe = false}) => {
         </View>
         {/* )} */}
 
-        <View style={{...styles.textLine, paddingTop: 15}}>
-          <Icon name="school" size={22} color="gray" />
-          <Text style={styles.textDetails}>Graduated university</Text>
-        </View>
-        <View style={styles.textLine}>
-          <Icon name="clock-time-three" size={22} color="gray" />
-          <Text style={styles.textDetails}>Joined on October 2023</Text>
-        </View>
-        <View style={{...styles.textLine, paddingBottom: 10}}>
-          <Icon name="map-marker" size={22} color="gray" />
-          <Text style={styles.textDetails}>From Indonesia</Text>
+        <View style={{paddingBottom: 5, alignSelf: 'flex-start'}}>
+          <Text style={{...styles.sectionTitle, marginBottom: 5}}>Details</Text>
+          <ProfileHeaderDetail iconName="school" text="Graduated university" />
+          <ProfileHeaderDetail
+            iconName="clock-time-three"
+            text="Joined on October 2023"
+          />
+          <ProfileHeaderDetail iconName="map-marker" text="From Indonesia" />
         </View>
       </View>
 
       <View style={{marginTop: 10, marginBottom: !isMe ? 10 : null}}>
         <Text
-          style={{...styles.sectionTitle, paddingBottom: !isMe ? 15 : null}}>
+          style={{
+            ...styles.sectionTitle,
+            paddingHorizontal: 10,
+            paddingBottom: !isMe ? 15 : null,
+          }}>
           Posts
         </Text>
         {isMe && <FeedHeader />}
@@ -126,17 +127,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     paddingVertical: 10,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: 'lightgrey',
-  },
-  textLine: {
-    flexDirection: 'row',
-    alignSelf: 'flex-start',
-    marginVertical: 5,
-  },
-  textDetails: {
-    fontSize: 16,
-    color: '#333',
-    marginLeft: 10,
+    borderColor: 'grey',
   },
   sectionTitle: {
     fontSize: 18,
@@ -144,6 +135,5 @@ const styles = StyleSheet.create({
     color: '#333',
     backgroundColor: '#fff',
     paddingTop: 15,
-    paddingHorizontal: 15,
   },
 });
