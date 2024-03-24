@@ -3,7 +3,7 @@ import {FlatList} from 'react-native';
 import posts from '../assets/data/posts.json';
 import {FeedHeader, FeedPost} from '../components';
 
-const FeedPostScreen = () => {
+const FeedPost = () => {
   return (
     <FlatList
       data={posts}
@@ -14,4 +14,4 @@ const FeedPostScreen = () => {
   );
 };
 
-export default FeedPostScreen;
+export default FeedPost;
