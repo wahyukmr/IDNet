@@ -27,7 +27,9 @@ const FeedHeader = () => {
         underlayColor="#f2f2f2"
         onPress={createPostNavigate}
         style={styles.btnWrapper}>
-        <Text style={{color: 'grey', fontSize: 18}}>What's on your mind?</Text>
+        <Text style={{color: 'grey', fontSize: 18, lineHeight: 28}}>
+          What's on your mind?
+        </Text>
       </TouchableHighlight>
     </View>
   );

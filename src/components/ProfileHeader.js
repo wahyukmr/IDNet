@@ -24,7 +24,7 @@ const ProfileHeader = ({user, isMe = false}) => {
         <Text style={styles.name}>{user.name}</Text>
 
         {/* {isMe && ( */}
-        <View style={styles.buttonsWrapper}>
+        <View style={styles.btnWrappers}>
           <Icon.Button
             name={isMe ? 'plus' : 'account-plus'}
             size={22}
@@ -32,7 +32,7 @@ const ProfileHeader = ({user, isMe = false}) => {
             backgroundColor="royalblue"
             iconStyle={{marginRight: 5}}
             onPress={() => console.log('Plus')}>
-            <Text style={{fontSize: 16, fontWeight: '600', color: '#fff'}}>
+            <Text style={{...styles.btnText, color: '#fff'}}>
               {isMe ? 'Add to Story' : 'Add to friend'}
             </Text>
           </Icon.Button>
@@ -43,7 +43,7 @@ const ProfileHeader = ({user, isMe = false}) => {
             backgroundColor="gainsboro"
             iconStyle={{marginRight: 5}}
             onPress={() => console.log('Edit')}>
-            <Text style={{fontSize: 16, fontWeight: '600', color: '#333'}}>
+            <Text style={{...styles.btnText, color: '#333'}}>
               {isMe ? 'Edit Profile' : 'Send Message'}
             </Text>
           </Icon.Button>
@@ -116,12 +116,13 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 20,
+    lineHeight: 28,
     fontWeight: 'bold',
     color: '#333',
     marginTop: 5,
     marginBottom: 15,
   },
-  buttonsWrapper: {
+  btnWrappers: {
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -129,8 +130,14 @@ const styles = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: 'grey',
   },
+  btnText: {
+    fontSize: 16,
+    fontWeight: '600',
+    lineHeight: 24,
+  },
   sectionTitle: {
     fontSize: 18,
+    lineHeight: 28,
     fontWeight: '600',
     color: '#333',
     backgroundColor: '#fff',

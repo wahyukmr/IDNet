@@ -17,7 +17,7 @@ const FeedPost = React.memo(({post}) => {
         <Pressable onPress={profileNavigate} style={{flexDirection: 'row'}}>
           <Image source={{uri: post.User.image}} style={styles.headerProfile} />
           <View>
-            <Text style={{fontSize: 16, fontWeight: '500'}}>
+            <Text style={{fontSize: 16, lineHeight: 24, fontWeight: '500'}}>
               {post.User.name}
             </Text>
             <Text style={{color: 'gray'}}>{post.createdAt}</Text>
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
   },
   postDescription: {
     fontSize: 16,
-    lineHeight: 20,
+    lineHeight: 24,
     letterSpacing: 0.3,
     marginBottom: 10,
   },

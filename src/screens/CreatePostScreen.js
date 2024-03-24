@@ -50,7 +50,7 @@ const CreatePostScreen = () => {
     <View style={{flex: 1}}>
       <View style={styles.header}>
         <Image source={{uri: user.image}} style={styles.userImage} />
-        <Text style={{fontSize: 16, fontWeight: 'bold'}}>{user.name}</Text>
+        <Text style={styles.userName}>{user.name}</Text>
         {!selectedImage && (
           <TouchableHighlight
             underlayColor="lightgrey"
@@ -116,8 +116,7 @@ const CreatePostScreen = () => {
             }}>
             <Text
               style={{
-                fontSize: 20,
-                fontWeight: 'bold',
+                ...styles.textPost,
                 color: description || selectedImage ? '#fff' : 'grey',
               }}>
               Post
@@ -143,6 +142,11 @@ const styles = StyleSheet.create({
     borderRadius: 40 / 2,
     marginRight: 10,
   },
+  userName: {
+    fontSize: 16,
+    lineHeight: 24,
+    fontWeight: 'bold',
+  },
   imageIconWrapper: {
     width: 40,
     height: 40,
@@ -154,6 +158,7 @@ const styles = StyleSheet.create({
   textInput: {
     flex: 1,
     fontSize: 18,
+    lineHeight: 28,
     letterSpacing: 0.3,
     textAlignVertical: 'top',
     paddingVertical: 20,
@@ -187,5 +192,10 @@ const styles = StyleSheet.create({
     borderRadius: 50 / 2,
     elevation: 4,
     overflow: 'hidden',
+  },
+  textPost: {
+    fontSize: 20,
+    lineHeight: 28,
+    fontWeight: 'bold',
   },
 });
