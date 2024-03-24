@@ -4,7 +4,7 @@ import {FlatList} from 'react-native';
 import users from '../assets/data/users.json';
 import {FeedPost, ProfileHeader} from '../components';
 
-const UserProfile = () => {
+const UserProfileScreen = () => {
   const route = useRoute();
 
   const selectedUserId = route?.params?.id;
@@ -21,4 +21,4 @@ const UserProfile = () => {
   );
 };
 
-export default UserProfile;
+export default UserProfileScreen;

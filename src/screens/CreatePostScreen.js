@@ -24,7 +24,7 @@ const user = {
   name: 'Vadim Savin',
 };
 
-const CreatePost = () => {
+const CreatePostScreen = () => {
   const [description, setDescription] = useState('');
   const [selectedImage, setSelectedImage] = useState(null);
   const [loadingImage, setLoadingImage] = useState(true);
@@ -128,7 +128,7 @@ const CreatePost = () => {
   );
 };
 
-export default CreatePost;
+export default CreatePostScreen;
 
 const styles = StyleSheet.create({
   header: {

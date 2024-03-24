@@ -1,17 +1,17 @@
 import React from 'react';
 import {FlatList} from 'react-native';
 import posts from '../assets/data/posts.json';
-import {FeedHeader, FeedPost} from '../components';
+import {FeedHeader, FeedPost as FeedPostScreen} from '../components';
 
-const FeedPost = () => {
+const FeedPostScreen = () => {
   return (
     <FlatList
       data={posts}
-      renderItem={({item}) => <FeedPost post={item} />}
+      renderItem={({item}) => <FeedPostScreen post={item} />}
       showsVerticalScrollIndicator={false}
       ListHeaderComponent={() => <FeedHeader />}
     />
   );
 };
 
-export default FeedPost;
+export default FeedPostScreen;
