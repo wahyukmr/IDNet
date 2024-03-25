@@ -1,7 +1,13 @@
-import FeedHeader from './FeedHeader';
-import FeedPost from './FeedPost';
+import FeedPostHeader from './FeedPostHeader';
+import FeedPostItem from './FeedPostItem';
 import LoadContent from './LoadContent';
 import ProfileHeader from './ProfileHeader';
-import ProfileHeaderDetail from './ProfileHeaderDetail';
+import ProfileHeaderDetailSection from './ProfileHeaderDetail';
 
-export {FeedHeader, FeedPost, LoadContent, ProfileHeader, ProfileHeaderDetail};
+export {
+  FeedPostHeader,
+  FeedPostItem,
+  LoadContent,
+  ProfileHeader,
+  ProfileHeaderDetailSection as ProfileHeaderDetail,
+};

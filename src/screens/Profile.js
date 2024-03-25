@@ -2,9 +2,9 @@ import {useRoute} from '@react-navigation/native';
 import React from 'react';
 import {FlatList} from 'react-native';
 import users from '../assets/data/users.json';
-import {FeedPost, ProfileHeader} from '../components';
+import {FeedPostItem, ProfileHeader} from '../components';
 
-const UserProfileScreen = () => {
+const Profile = () => {
   const route = useRoute();
 
   const selectedUserId = route?.params?.id;
@@ -13,7 +13,7 @@ const UserProfileScreen = () => {
   return (
     <FlatList
       data={userDetails[0]?.posts}
-      renderItem={({item}) => <FeedPost post={item} />}
+      renderItem={({item}) => <FeedPostItem post={item} />}
       showsVerticalScrollIndicator={false}
       /*Todo: buat nilai property isMe jadi dynamic */
       ListHeaderComponent={<ProfileHeader user={userDetails[0]} isMe={true} />}
@@ -21,4 +21,4 @@ const UserProfileScreen = () => {
   );
 };
 
-export default UserProfileScreen;
+export default Profile;

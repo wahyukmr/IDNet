@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import Animated, {FadeInUp} from 'react-native-reanimated';
 
-const WelcomeScreen = () => {
+const Welcome = () => {
   return (
     <View style={styles.container}>
       <Animated.Image
@@ -30,7 +30,7 @@ const WelcomeScreen = () => {
   );
 };
 
-export default WelcomeScreen;
+export default Welcome;
 
 const styles = StyleSheet.create({
   container: {

@@ -12,7 +12,7 @@ import {
 const img =
   'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/user.png';
 
-const FeedHeader = () => {
+const FeedPostHeader = () => {
   const navigation = useNavigation();
 
   const profileNavigate = () => navigation.navigate('Profile');
@@ -35,7 +35,7 @@ const FeedHeader = () => {
   );
 };
 
-export default FeedHeader;
+export default FeedPostHeader;
 
 const styles = StyleSheet.create({
   feedHeader: {

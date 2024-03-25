@@ -4,7 +4,7 @@ import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import likeIcon from '../assets/images/like.png';
 
-const FeedPost = React.memo(({post}) => {
+const FeedPostItem = React.memo(({post}) => {
   const [isLiked, setIsLiked] = useState(false);
 
   const navigation = useNavigation();
@@ -86,7 +86,7 @@ const FeedPost = React.memo(({post}) => {
   );
 });
 
-export default FeedPost;
+export default FeedPostItem;
 
 const styles = StyleSheet.create({
   postWrapper: {

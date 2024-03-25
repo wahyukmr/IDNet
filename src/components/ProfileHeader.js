@@ -2,7 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Alert, Dimensions, Image, StyleSheet, Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {FeedHeader, ProfileHeaderDetail} from '.';
+import {FeedPostHeader, ProfileHeaderDetail} from '.';
 
 const dummy_img =
   'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/user.png';
@@ -78,7 +78,7 @@ const ProfileHeader = ({user, isMe = false}) => {
           }}>
           Posts
         </Text>
-        {isMe && <FeedHeader />}
+        {isMe && <FeedPostHeader />}
       </View>
     </>
   ) : (

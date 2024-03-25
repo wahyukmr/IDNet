@@ -1,12 +1,7 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import {
-  CreatePostScreen,
-  FeedPostScreen,
-  UserProfileScreen,
-  WelcomeScreen,
-} from '../screens';
+import {CreatePost, FeedPost, Profile, Welcome} from '../screens';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,10 +14,10 @@ export default function Navigator() {
           statusBarColor: 'transparent',
           statusBarTranslucent: true,
         }}>
-        <Stack.Screen name="Welcome" component={WelcomeScreen} />
-        <Stack.Screen name="Feed" component={FeedPostScreen} />
-        <Stack.Screen name="Create Post" component={CreatePostScreen} />
-        <Stack.Screen name="Profile" component={UserProfileScreen} />
+        <Stack.Screen name="Welcome" component={Welcome} />
+        <Stack.Screen name="Feed" component={FeedPost} />
+        <Stack.Screen name="Create Post" component={CreatePost} />
+        <Stack.Screen name="Profile" component={Profile} />
       </Stack.Navigator>
     </NavigationContainer>
   );

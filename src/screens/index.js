@@ -1,6 +1,6 @@
-import CreatePostScreen from './CreatePostScreen';
-import FeedPostScreen from './FeedPostScreen';
-import UserProfileScreen from './UserProfileScreen';
-import WelcomeScreen from './WelcomeScreen';
+import CreatePost from './CreatePost';
+import FeedPost from './FeedPost';
+import Profile from './Profile';
+import Welcome from './Welcome';
 
-export {CreatePostScreen, FeedPostScreen, UserProfileScreen, WelcomeScreen};
+export {CreatePost as CreatePost, FeedPost, Profile, Welcome};
