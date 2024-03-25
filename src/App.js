@@ -1,18 +1,15 @@
 import React from 'react';
-import {StatusBar, View, useColorScheme} from 'react-native';
+import {View} from 'react-native';
+import {ThemeProvider} from './contexts/Theme';
 import Navigator from './routes';
 
 const App = () => {
-  const dark = useColorScheme() === 'dark';
-
   return (
-    <View style={{flex: 1}}>
-      <StatusBar
-        barStyle={dark ? 'light-content' : 'dark-content'}
-        backgroundColor="transparent"
-      />
-      <Navigator />
-    </View>
+    <ThemeProvider>
+      <View style={{flex: 1}}>
+        <Navigator />
+      </View>
+    </ThemeProvider>
   );
 };
 export default App;
