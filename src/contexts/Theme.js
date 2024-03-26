@@ -3,7 +3,7 @@ import {useColorScheme} from 'react-native';
 import {darkTheme, lightTheme} from '../utils/colors';
 
 const ThemeContext = createContext({
-  theme: lightTheme,
+  theme: '',
   setTheme: () => {},
 });
 
@@ -13,10 +13,9 @@ export const ThemeProvider = ({children}) => {
     systemTheme === 'dark' ? darkTheme : lightTheme,
   );
 
-  useEffect(
-    () => setTheme(systemTheme === 'dark' ? darkTheme : lightTheme),
-    [systemTheme],
-  );
+  useEffect(() => {
+    setTheme(systemTheme === 'dark' ? darkTheme : lightTheme);
+  }, [systemTheme]);
 
   return (
     <ThemeContext.Provider value={{theme, setTheme}}>

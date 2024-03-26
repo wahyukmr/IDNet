@@ -1,5 +1,5 @@
 export const lightTheme = {
-  barstyle: 'dark-content',
+  barStyle: 'dark-content',
   primary100: '#E05297',
   primary200: '#F3BAD6',
   primary300: '#E0E2E5',
@@ -13,7 +13,7 @@ export const lightTheme = {
 };
 
 export const darkTheme = {
-  barstyle: 'light-content',
+  barStyle: 'light-content',
   primary100: '#E05297',
   primary200: '#F3BAD6',
   primary300: '#E0E2E5',

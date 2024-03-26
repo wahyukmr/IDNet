@@ -1,17 +1,21 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
+import {useTheme} from '../contexts/Theme';
 import {CreatePost, FeedPost, Profile, Welcome} from '../screens';
 
 const Stack = createNativeStackNavigator();
 
 export default function Navigator() {
+  const {theme} = useTheme();
+
   return (
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
-          statusBarColor: 'transparent',
+          statusBarStyle: theme === 'darkLight' ? 'light' : 'dark',
+          statusBarColor: theme.bg100,
           statusBarTranslucent: true,
         }}>
         <Stack.Screen name="Welcome" component={Welcome} />
