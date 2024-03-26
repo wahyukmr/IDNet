@@ -42,7 +42,12 @@ const Welcome = () => {
       <View style={styles.buttonWrapper}>
         <TouchableOpacity
           activeOpacity={0.7}
-          style={{...styles.btnLogin, backgroundColor: theme.primary100}}
+          style={{
+            ...styles.btnAction,
+            elevation: 10,
+            backgroundColor: theme.primary100,
+            shadowColor: theme.primary100,
+          }}
           onPress={() => navigation.navigate('Login')}>
           <Text style={{...styles.btnText, color: theme.primary300}}>
             Login
@@ -50,9 +55,9 @@ const Welcome = () => {
         </TouchableOpacity>
         <TouchableOpacity
           activeOpacity={0.7}
-          style={{...styles.btnRegister, backgroundColor: theme.primary300}}
+          style={{...styles.btnAction, backgroundColor: theme.primary300}}
           onPress={() => navigation.navigate('Register')}>
-          <Text style={{...styles.btnText, color: theme.text100}}>
+          <Text style={{...styles.btnText, color: theme.text200}}>
             Register
           </Text>
         </TouchableOpacity>
@@ -94,19 +99,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingTop: 60,
   },
-  btnLogin: {
-    flex: 1,
-    paddingVertical: 15,
-    paddingHorizontal: 20,
-    borderRadius: 10,
-    shadowOffset: {
-      width: 0,
-      height: 10,
-    },
-    shadowOpacity: 0.3,
-    shadowRadius: 10,
-  },
-  btnRegister: {
+  btnAction: {
     flex: 1,
     paddingVertical: 15,
     paddingHorizontal: 20,
