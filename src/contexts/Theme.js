@@ -1,6 +1,6 @@
 import {createContext, useContext, useEffect, useState} from 'react';
 import {useColorScheme} from 'react-native';
-import {darkTheme, lightTheme} from '../utils/colors';
+import {darkThemes, lightThemes} from '../constants';
 
 const ThemeContext = createContext({
   theme: '',
@@ -10,11 +10,11 @@ const ThemeContext = createContext({
 export const ThemeProvider = ({children}) => {
   const systemTheme = useColorScheme();
   const [theme, setTheme] = useState(
-    systemTheme === 'dark' ? darkTheme : lightTheme,
+    systemTheme === 'dark' ? darkThemes : lightThemes,
   );
 
   useEffect(() => {
-    setTheme(systemTheme === 'dark' ? darkTheme : lightTheme);
+    setTheme(systemTheme === 'dark' ? darkThemes : lightThemes);
   }, [systemTheme]);
 
   return (
