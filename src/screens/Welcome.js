@@ -9,6 +9,7 @@ import {
   View,
 } from 'react-native';
 import Animated, {FadeInUp} from 'react-native-reanimated';
+import {radius, shadows, sizes, spaces} from '../constants';
 import {useTheme} from '../contexts/Theme';
 
 const {height} = Dimensions.get('window');
@@ -25,7 +26,7 @@ const Welcome = () => {
         resizeMode="contain"
         style={styles.image}
       />
-      <View style={{paddingHorizontal: 40, paddingTop: 40}}>
+      <View style={{paddingHorizontal: spaces.large, paddingTop: spaces.large}}>
         <Text
           style={{
             ...styles.textHeading,
@@ -44,7 +45,7 @@ const Welcome = () => {
           activeOpacity={0.7}
           style={{
             ...styles.btnAction,
-            elevation: 10,
+            elevation: shadows.medium,
             backgroundColor: theme.primary100,
             shadowColor: theme.primary100,
           }}
@@ -55,7 +56,11 @@ const Welcome = () => {
         </TouchableOpacity>
         <TouchableOpacity
           activeOpacity={0.7}
-          style={{...styles.btnAction, backgroundColor: theme.primary300}}
+          style={{
+            ...styles.btnAction,
+            backgroundColor: theme.primary300,
+            elevation: shadows.thin,
+          }}
           onPress={() => navigation.navigate('Register')}>
           <Text style={{...styles.btnText, color: theme.text200}}>
             Register
@@ -77,36 +82,35 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: height / 2.5,
-    marginBottom: 20,
+    marginBottom: spaces.medium,
   },
   textHeading: {
-    fontSize: 36,
-    lineHeight: 40,
+    ...sizes.text4xL,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: 20,
+    marginBottom: spaces.medium,
   },
   textSubHeading: {
-    fontSize: 14,
-    lineHeight: 20,
+    ...sizes.textSM,
     fontWeight: '500',
     textAlign: 'center',
+    marginBottom: spaces.medium,
   },
   buttonWrapper: {
     flexDirection: 'row',
-    gap: 20,
+    columnGap: 20,
     width: '100%',
-    paddingHorizontal: 20,
-    paddingTop: 60,
+    paddingHorizontal: spaces.large,
+    paddingTop: spaces.medium,
   },
   btnAction: {
     flex: 1,
-    paddingVertical: 15,
-    paddingHorizontal: 20,
-    borderRadius: 10,
+    height: 55,
+    justifyContent: 'center',
+    borderRadius: radius.default,
   },
   btnText: {
-    fontSize: 20,
+    ...sizes.textXL,
     fontWeight: 'bold',
     textAlign: 'center',
   },
