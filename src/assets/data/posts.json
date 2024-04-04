@@ -7,7 +7,7 @@
       "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg",
       "name": "Vadim Savin"
     },
-    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/1.jpg",
     "numberOfLikes": 11,
     "numberOfShares": 2
@@ -20,7 +20,7 @@
       "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/elon.png",
       "name": "Elon Musk"
     },
-    "description": "Today we launched another rocket 🚀",
+    "description": "Today we launched another rocket 🚀 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
     "numberOfLikes": 312,
     "numberOfShares": 54
   },
