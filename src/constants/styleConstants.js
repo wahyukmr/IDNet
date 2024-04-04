@@ -27,7 +27,6 @@ export const darkThemes = {
 };
 
 export const sizes = {
-  // Font size
   textXS: {fontSize: 12, lineHeight: 16},
   textSM: {fontSize: 14, lineHeight: 20},
   textBASE: {fontSize: 16, lineHeight: 24},
@@ -41,15 +40,10 @@ export const sizes = {
   text7xL: 72,
   text8xL: 96,
   text9xL: 128,
-
-  // Margin
-  marginXS: 10,
-  marginSM: 15,
-  marginLG: 20,
-  marginXL: 40,
 };
 
 export const spaces = {
+  extraSmall: 8,
   small: 10,
   medium: 20,
   large: 40,
