@@ -1,7 +1,7 @@
 import CreatePost from './CreatePost';
-import FeedPost from './FeedPost';
+import Home from './Home';
 import Profile from './Profile';
 import Register from './Register';
 import Welcome from './Welcome';
 
-export {CreatePost, FeedPost, Profile, Register, Welcome};
+export {CreatePost, Home, Profile, Register, Welcome};
