@@ -2,7 +2,6 @@ import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {
   Dimensions,
-  StatusBar,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -77,7 +76,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    paddingTop: StatusBar.currentHeight + 20,
+    paddingTop: spaces.medium,
   },
   image: {
     width: '100%',
@@ -98,7 +97,7 @@ const styles = StyleSheet.create({
   },
   buttonWrapper: {
     flexDirection: 'row',
-    columnGap: 20,
+    columnGap: spaces.medium,
     width: '100%',
     paddingHorizontal: spaces.large,
     paddingTop: spaces.medium,
