@@ -22,7 +22,7 @@ export default function Navigator() {
         <Stack.Screen
           name="Login"
           component={Login}
-          options={{animation: 'slide_from_right'}}
+          options={{animation: 'slide_from_left'}}
         />
         <Stack.Screen
           name="Register"
