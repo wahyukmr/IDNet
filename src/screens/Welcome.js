@@ -20,7 +20,7 @@ const Welcome = () => {
   return (
     <View style={{...styles.container, backgroundColor: theme.bg100}}>
       <Animated.Image
-        entering={FadeInUp.delay(200).duration(1000)}
+        entering={FadeInUp.delay(200).duration(500)}
         source={require('../assets/images/welcome-image.png')}
         resizeMode="contain"
         style={styles.image}
