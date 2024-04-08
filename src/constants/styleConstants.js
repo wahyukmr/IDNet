@@ -1,4 +1,5 @@
 export const lightThemes = {
+  hairLine: 'lightgrey',
   barStyle: 'dark-content',
   primary100: '#E05297',
   primary200: '#F3BAD6',
@@ -13,6 +14,7 @@ export const lightThemes = {
 };
 
 export const darkThemes = {
+  hairLine: 'darkgrey',
   barStyle: 'light-content',
   primary100: '#E05297',
   primary200: '#F3BAD6',
