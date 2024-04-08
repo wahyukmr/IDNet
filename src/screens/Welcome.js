@@ -57,11 +57,13 @@ const Welcome = () => {
           activeOpacity={0.7}
           style={{
             ...styles.btnAction,
-            backgroundColor: theme.primary300,
+            backgroundColor: theme.bg300,
             elevation: shadows.thin,
           }}
           onPress={() => navigation.navigate('Register')}>
-          <Text style={{...styles.btnText}}>Register</Text>
+          <Text style={{...styles.btnText, color: theme.text200}}>
+            Register
+          </Text>
         </TouchableOpacity>
       </View>
     </View>
