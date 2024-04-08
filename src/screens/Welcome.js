@@ -61,9 +61,7 @@ const Welcome = () => {
             elevation: shadows.thin,
           }}
           onPress={() => navigation.navigate('Register')}>
-          <Text style={{...styles.btnText, color: theme.text200}}>
-            Register
-          </Text>
+          <Text style={{...styles.btnText}}>Register</Text>
         </TouchableOpacity>
       </View>
     </View>
