@@ -4,7 +4,6 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   TouchableNativeFeedback,
@@ -103,14 +102,13 @@ const AuthForm = ({isLogin}) => {
             <View
               style={{
                 ...styles.btnAction,
-                backgroundColor: validFormCondition
-                  ? theme.primary100
-                  : theme.primary300,
+                backgroundColor: theme.primary100,
+                opacity: validFormCondition ? 1 : 0.4,
               }}>
               <Text
                 style={{
                   ...styles.btnText,
-                  color: validFormCondition ? theme.primary300 : theme.text200,
+                  color: theme.primary300,
                 }}>
                 {isLogin ? 'Sign in' : 'Sign up'}
               </Text>
@@ -132,14 +130,14 @@ const AuthForm = ({isLogin}) => {
               <TouchableOpacity
                 activeOpacity={0.7}
                 style={{...styles.btnIcon, backgroundColor: theme.bg200}}
-                onPress={() => navigation.navigate('Register')}>
-                <Icon name="google" size={28} color={theme.primary100} />
+                onPress={() => navigation.navigate('Home')}>
+                <Icon name="google" size={28} color={theme.text100} />
               </TouchableOpacity>
               <TouchableOpacity
                 activeOpacity={0.7}
                 style={{...styles.btnIcon, backgroundColor: theme.bg200}}
                 onPress={() => navigation.navigate('Register')}>
-                <Icon name="facebook" size={28} color={theme.primary100} />
+                <Icon name="facebook" size={28} color={theme.text100} />
               </TouchableOpacity>
             </View>
           </View>
@@ -155,7 +153,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     paddingHorizontal: spaces.medium,
-    paddingTop: StatusBar.currentHeight + 20,
+    paddingTop: spaces.medium,
   },
   textHeading: {
     ...sizes.text4xL,
@@ -193,7 +191,7 @@ const styles = StyleSheet.create({
   btnIconWrapper: {
     marginTop: spaces.small,
     flexDirection: 'row',
-    columnGap: 20,
+    columnGap: spaces.medium,
     width: '40%',
   },
   btnIcon: {
