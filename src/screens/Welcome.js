@@ -18,7 +18,7 @@ const Welcome = () => {
   const navigation = useNavigation();
 
   return (
-    <View style={{...styles.container, backgroundColor: theme.bg100}}>
+    <View style={styles.container(theme)}>
       <Animated.Image
         entering={FadeInUp.delay(200).duration(500)}
         source={require('../assets/images/welcome-image.png')}
@@ -26,14 +26,7 @@ const Welcome = () => {
         style={styles.image}
       />
       <View style={{paddingHorizontal: spaces.large, paddingTop: spaces.large}}>
-        <Text
-          style={{
-            ...styles.textHeading,
-            color: theme.primary100,
-            shadowColor: theme.primary100,
-          }}>
-          Welcome to IDNet!
-        </Text>
+        <Text style={styles.textHeading(theme)}>Welcome to IDNet!</Text>
         <Text style={{...styles.textSubHeading, color: theme.text200}}>
           Connect, share, and create with friends and family. Join the IDNet
           community today and start your social media journey with us!
@@ -41,29 +34,24 @@ const Welcome = () => {
       </View>
       <View style={styles.buttonWrapper}>
         <TouchableOpacity
-          activeOpacity={0.7}
-          style={{
-            ...styles.btnAction,
-            elevation: shadows.medium,
-            backgroundColor: theme.primary100,
-            shadowColor: theme.primary100,
-          }}
+          activeOpacity={0.5}
+          style={styles.btnPrimary(theme)}
           onPress={() => navigation.navigate('Login')}>
-          <Text style={{...styles.btnText, color: theme.primary300}}>
-            Login
-          </Text>
+          <Text style={{...styles.btnText, color: theme.bg200}}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          activeOpacity={0.7}
-          style={{
-            ...styles.btnAction,
-            backgroundColor: theme.bg300,
-            elevation: shadows.thin,
-          }}
+          activeOpacity={0.5}
+          style={styles.btnSecondary}
           onPress={() => navigation.navigate('Register')}>
-          <Text style={{...styles.btnText, color: theme.text200}}>
-            Register
-          </Text>
+          <View style={styles.innerBorder(theme)}>
+            <Text
+              style={{
+                ...styles.btnText,
+                color: theme.primary100,
+              }}>
+              Register
+            </Text>
+          </View>
         </TouchableOpacity>
       </View>
     </View>
@@ -73,22 +61,24 @@ const Welcome = () => {
 export default Welcome;
 
 const styles = StyleSheet.create({
-  container: {
+  container: theme => ({
     flex: 1,
+    backgroundColor: theme.bg100,
     alignItems: 'center',
     paddingTop: spaces.medium,
-  },
+  }),
   image: {
     width: '100%',
     height: height / 2.5,
     marginBottom: spaces.medium,
   },
-  textHeading: {
+  textHeading: theme => ({
     ...sizes.text4xL,
     fontWeight: 'bold',
     textAlign: 'center',
+    color: theme.primary100,
     marginBottom: spaces.medium,
-  },
+  }),
   textSubHeading: {
     ...sizes.textSM,
     fontWeight: '500',
@@ -102,15 +92,30 @@ const styles = StyleSheet.create({
     paddingHorizontal: spaces.large,
     paddingTop: spaces.medium,
   },
-  btnAction: {
+  btnPrimary: theme => ({
     flex: 1,
     height: 55,
     justifyContent: 'center',
     borderRadius: radius.default,
+    backgroundColor: theme.primary100,
+    shadowColor: theme.primary100,
+    elevation: shadows.thin,
+  }),
+  btnSecondary: {
+    flex: 1,
+    backgroundColor: 'transparent',
+    overflow: 'hidden',
   },
+  innerBorder: theme => ({
+    height: 55,
+    borderWidth: 2,
+    borderColor: theme.primary100,
+    borderRadius: radius.default,
+    justifyContent: 'center',
+  }),
   btnText: {
     ...sizes.textXL,
-    fontWeight: 'bold',
+    fontWeight: '600',
     textAlign: 'center',
   },
 });

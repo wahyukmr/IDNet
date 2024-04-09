@@ -35,7 +35,8 @@ const FormTextInput = ({secureTextEntry, label, error, ...otherProps}) => {
   return (
     <View style={styles.container}>
       {focused === false && error !== null && (
-        <Animated.Text style={[{...styles.label, color: 'red'}, errorStyle]}>
+        <Animated.Text
+          style={[{...styles.label, color: theme.error}, errorStyle]}>
           {error ? error : 'Required'}
         </Animated.Text>
       )}
@@ -49,14 +50,7 @@ const FormTextInput = ({secureTextEntry, label, error, ...otherProps}) => {
         placeholder={focused ? otherProps.placeholderText : label}
         placeholderTextColor={theme.text200}
         autoCapitalize="none"
-        style={[
-          {...styles.input, backgroundColor: theme.bg300},
-          focused && {
-            ...styles.focusedInput,
-            borderColor: theme.primary200,
-            shadowColor: theme.primary200,
-          },
-        ]}
+        style={[styles.input(theme), focused && styles.focusedInput(theme)]}
         {...otherProps}
       />
       {secureTextEntry && (
@@ -89,17 +83,21 @@ const styles = StyleSheet.create({
     ...sizes.textSM,
     fontWeight: '500',
   },
-  input: {
+  input: theme => ({
     flex: 1,
     height: 60,
-    ...sizes.textLG,
+    ...sizes.textBASE,
+    backgroundColor: theme.bg300,
     paddingHorizontal: spaces.medium,
     borderRadius: radius.default,
     marginTop: spaces.medium,
     marginBottom: spaces.medium,
-  },
-  focusedInput: {
+  }),
+  focusedInput: theme => ({
+    color: theme.text100,
     borderWidth: 3,
+    borderColor: theme.primary200,
+    shadowColor: theme.primary200,
     elevation: shadows.medium,
-  },
+  }),
 });

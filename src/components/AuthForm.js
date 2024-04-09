@@ -43,10 +43,10 @@ const AuthForm = ({isLogin}) => {
         contentContainerStyle={{flexGrow: 1, paddingBottom: spaces.extraLarge}}
         keyboardShouldPersistTaps="handled">
         <View style={styles.container}>
-          <Text style={{...styles.textHeading, color: theme.primary100}}>
+          <Text style={styles.textHeading(theme)}>
             {isLogin ? 'Login here' : 'Create Account'}
           </Text>
-          <Text style={{...styles.textSubHeading, color: theme.text200}}>
+          <Text style={styles.textSubHeading(theme)}>
             {isLogin
               ? 'Reconnect with your circle, share your story'
               : 'Register and start sharing your moments'}
@@ -99,17 +99,8 @@ const AuthForm = ({isLogin}) => {
             useForeground
             disabled={!validFormCondition}
             onPress={() => console.log('submit')}>
-            <View
-              style={{
-                ...styles.btnAction,
-                backgroundColor: theme.primary100,
-                opacity: validFormCondition ? 1 : 0.4,
-              }}>
-              <Text
-                style={{
-                  ...styles.btnText,
-                  color: theme.primary300,
-                }}>
+            <View style={styles.btnAction(theme, validForm)}>
+              <Text style={styles.btnText(theme, validForm)}>
                 {isLogin ? 'Sign in' : 'Sign up'}
               </Text>
             </View>
@@ -129,15 +120,15 @@ const AuthForm = ({isLogin}) => {
             <View style={styles.btnIconWrapper}>
               <TouchableOpacity
                 activeOpacity={0.7}
-                style={{...styles.btnIcon, backgroundColor: theme.bg200}}
+                style={styles.btnIcon(theme)}
                 onPress={() => navigation.navigate('Home')}>
-                <Icon name="google" size={28} color={theme.text100} />
+                <Icon name="google" size={28} color={theme.primary100} />
               </TouchableOpacity>
               <TouchableOpacity
                 activeOpacity={0.7}
-                style={{...styles.btnIcon, backgroundColor: theme.bg200}}
+                style={styles.btnIcon(theme)}
                 onPress={() => navigation.navigate('Register')}>
-                <Icon name="facebook" size={28} color={theme.text100} />
+                <Icon name="facebook" size={28} color={theme.primary100} />
               </TouchableOpacity>
             </View>
           </View>
@@ -155,34 +146,38 @@ const styles = StyleSheet.create({
     paddingHorizontal: spaces.medium,
     paddingTop: spaces.medium,
   },
-  textHeading: {
+  textHeading: theme => ({
     ...sizes.text4xL,
     fontWeight: '700',
+    color: theme.primary100,
     marginTop: spaces.medium,
     marginBottom: spaces.small,
-  },
-  textSubHeading: {
+  }),
+  textSubHeading: theme => ({
     ...sizes.textLG,
     fontWeight: '500',
+    color: theme.text200,
     maxWidth: '70%',
     textAlign: 'center',
     marginBottom: spaces.small,
-  },
-  btnAction: {
+  }),
+  btnAction: (theme, action) => ({
     width: '100%',
     height: 55,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: action ? theme.primary100 : theme.bg300,
     borderRadius: radius.default,
     marginTop: spaces.large,
     marginBottom: spaces.medium,
     elevation: shadows.thin,
     overflow: 'hidden',
-  },
-  btnText: {
+  }),
+  btnText: (theme, action) => ({
     ...sizes.textXL,
-    fontWeight: 'bold',
-  },
+    fontWeight: '600',
+    color: action ? theme.primary300 : theme.primary200,
+  }),
   textOptions: {
     ...sizes.textSM,
     fontWeight: '500',
@@ -194,12 +189,12 @@ const styles = StyleSheet.create({
     columnGap: spaces.medium,
     width: '40%',
   },
-  btnIcon: {
+  btnIcon: theme => ({
     flex: 1,
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: theme.bg300,
     borderRadius: radius.default,
-    elevation: shadows.thin,
-  },
+  }),
 });
